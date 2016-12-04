@@ -18,7 +18,7 @@ ul{
   display: flex;
   flex-direction: row;
   .slider-nav{
-    flex:0 1 200px;
+    flex:0 0 200px;
     background: #1e67b3;
     height: 100vh;
     ul{
@@ -44,9 +44,32 @@ ul{
   .main-view{
     flex:1 1 auto;
     .friend-star{
-      canvas{
-        width:700px;
-        height:1200px;
+      .input-area{
+        display: border-box;
+        padding: 10px;
+        .input-item{
+          display: block;
+          margin-bottom: 10px;
+          height: 24px;
+          line-height:24px;
+          &.col-3{
+            display: inline-block;
+            width: 33%;
+          }
+          span.head{
+            display: inline-block;
+            text-align: right;
+            width: 70px;
+            height: 24px;
+            line-height:24px;
+            margin-right: 10px;
+          }
+          input{
+            height: inherit;
+            border:1px solid #5FB5E3;
+            border-radius:3px;
+            }
+        }
       }
     }
   }
