@@ -2,7 +2,7 @@
 * @Author: jumorzhu@tecent.com
 * @Date:   2016-11-22 17:19:47
 * @Last Modified by:   CodingJoker
-* @Last Modified time: 2016-12-04 22:37:57
+* @Last Modified time: 2016-12-05 00:19:17
 */
 
 'use strict';
@@ -16,12 +16,13 @@ class FriendsStarComponent extends React.Component{
     super(props);
     this.fileInput = this.fileInput.bind(this);
     this.drawToCanvas = this.drawToCanvas.bind(this);
+    this.valueInput = this.valueInput.bind(this);
     var
       _this = this
       ,date = new Date()
     ;
 
-    this.state = {
+    this.data = {
       appData:{
         hour : date.getHours(),
         min : date.getMinutes(),
@@ -30,16 +31,15 @@ class FriendsStarComponent extends React.Component{
         day : date.getDate(),
         like:23,
         comment:24
-      }
+      },
+      dataUrl:''
     }
   }
-  state = {
-    appData:{}
-  }
+
   componentDidMount() {
 
   };
-  drawToCanvas(dataUrl){
+  drawToCanvas(){
     var
        ctx = this.refs.canvas.getContext('2d')
        ,image = new Image()
@@ -47,18 +47,18 @@ class FriendsStarComponent extends React.Component{
        ,ctx = canvas.getContext('2d')
        ,_this = this
      ;
-     image.src = dataUrl;
+     image.src = this.data.dataUrl;
      image.onload = function(){
          ctx.drawImage(image,0,0,640,1136);
          var
              date = new Date()
-             ,hour = _this.state.appData.hour
-             ,min = _this.state.appData.min
-             ,year = _this.state.appData.year
-             ,mouth = _this.state.appData.mouth
-             ,day = _this.state.appData.day
-             ,like = _this.state.appData.like
-             ,comment = _this.state.appData.comment
+             ,hour = _this.data.appData.hour
+             ,min = _this.data.appData.min
+             ,year = _this.data.appData.year
+             ,mouth = _this.data.appData.mouth
+             ,day = _this.data.appData.day
+             ,like = _this.data.appData.like
+             ,comment = _this.data.appData.comment
            ;
            min = min < 10 ? '0'+min : min;
            hour = hour < 10 ? '0' +hour :hour;
@@ -94,8 +94,8 @@ class FriendsStarComponent extends React.Component{
      };
   };
   fileInput(e){
-    var _this = this;
-       var file = e.target.files[0];//获取input输入的图片
+    let _this = this;
+    var file = e.target.files[0];//获取input输入的图片
           if(!/image\/\w+/.test(file.type)){
               alert("请确保文件为图像类型");
               return false;
@@ -104,24 +104,37 @@ class FriendsStarComponent extends React.Component{
           var reader = new FileReader();
           reader.readAsDataURL(file);//转化成base64数据类型
           reader.onload = function(e){
-                _this.drawToCanvas(this.result);
+              _this.data.dataUrl = this.result;
+                _this.drawToCanvas();
          }
   };
+
+  valueInput(type){
+    let
+      _this = this
+    ;
+   return function(e){
+      let value = e.target.value;
+      _this.data.appData[type] = value;
+      _this.drawToCanvas();
+   }
+  };
+
   render(){
      return (
-        <div className="friend-star"onChange={this.fileInput}>
+        <div className="friend-star">
           <h3 className='title'>Friends-Star</h3>
           <div className="input-area">
               <div className="input-item">
-                <input type="file" ref = 'file-input'/>
+                <input type="file" ref = 'file-input'onChange={this.fileInput}/>
               </div>
               <div className="input-item">
                 <span className="head">点赞数: </span>
-                <input type="text" ref = 'like-input'/>
+                <input type="text" ref = 'like-input' onChange={this.valueInput('like')}/>
               </div>
               <div className="input-item">
                 <span className="head">评论数: </span>
-                <input type="text" ref = 'comment-input'/>
+                <input type="text" ref = 'comment-input' onChange={this.valueInput('comment')}/>
               </div>
               <div className="input-item">
                 <span className="head">年: </span>
