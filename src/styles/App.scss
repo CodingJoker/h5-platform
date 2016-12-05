@@ -7,6 +7,7 @@ body {
   color: #000;
   font-family: 'Comic Sans MS',cursive,sans-serif;
   font-size: 16px;
+  overflow: hidden;
 }
 a{
   text-decoration: none;
@@ -19,8 +20,23 @@ ul{
   flex-direction: row;
   .slider-nav{
     flex:0 0 200px;
+    position: relative;
+    left: 0;
+    top: 0;
+    transition: .1s all linear;
     background: #1e67b3;
     height: 100vh;
+    &.hide{
+      left: -180px;
+    }
+    .hide-btn{
+      display: inline-block;
+      position: absolute;
+      color:#fff;
+      left: 180px;
+      top:40%;
+      cursor: pointer;
+    }
     ul{
       display: border-box;
       width:100%;
@@ -43,6 +59,11 @@ ul{
   }
   .main-view{
     flex:1 1 auto;
+    transition: .2s all linear;
+    &.slide-hide{
+      position: absolute;
+      left: 20px;
+    }
     .friend-star{
       .input-area{
         display: border-box;
@@ -56,13 +77,26 @@ ul{
             display: inline-block;
             width: 33%;
           }
-          span.head{
+          span{
+            &.head{
             display: inline-block;
             text-align: right;
             width: 70px;
             height: 24px;
             line-height:24px;
             margin-right: 10px;
+            }
+            &.input-btn{
+              display: inline-block;
+              width: 60px;
+              height: 28px;
+              line-height:28px;
+              background: #1CA6F2;
+              text-align: center;
+              border-radius: 4px;
+              cursor: pointer;
+              color:#fff;
+            }
           }
           input{
             height: inherit;

@@ -1,8 +1,8 @@
 /*
 * @Author: jumorzhu@tecent.com
 * @Date:   2016-11-22 17:19:47
-* @Last Modified by:   CodingJoker
-* @Last Modified time: 2016-12-05 00:19:17
+* @Last Modified by:   jumorzhu
+* @Last Modified time: 2016-12-05 16:51:44
 */
 
 'use strict';
@@ -17,6 +17,7 @@ class FriendsStarComponent extends React.Component{
     this.fileInput = this.fileInput.bind(this);
     this.drawToCanvas = this.drawToCanvas.bind(this);
     this.valueInput = this.valueInput.bind(this);
+    this.submit = this.submit.bind(this);
     var
       _this = this
       ,date = new Date()
@@ -37,7 +38,6 @@ class FriendsStarComponent extends React.Component{
   }
 
   componentDidMount() {
-
   };
   drawToCanvas(){
     var
@@ -59,37 +59,43 @@ class FriendsStarComponent extends React.Component{
              ,day = _this.data.appData.day
              ,like = _this.data.appData.like
              ,comment = _this.data.appData.comment
+             ,like_comment_img = _this.refs.like_comment
            ;
-           min = min < 10 ? '0'+min : min;
-           hour = hour < 10 ? '0' +hour :hour;
-           day = day < 10 ? '0' + day : day;
 
-           console.log(year+"年"+mouth+'月'+day+'日 '+hour+' : '+min);
+         min = min < 10 ? '0'+min : min;
+         hour = hour < 10 ? '0' +hour :hour;
+         day = day < 10 ? '0' + day : day;
+
+         console.log(year+"年"+mouth+'月'+day+'日 '+hour+' : '+min);
          //设置顶部时间
-         ctx.fillStyle = '#000';
-         ctx.fillRect(290,0,75,33);
-           ctx.font = "22px Heiti SC";
-           ctx.fillStyle = '#fff';
-           ctx.fillText(hour+' : '+min,288,30);
-           //设置日期时间
-           ctx.fillStyle = '#000';
-           ctx.fillRect(120,70,370,30);
-           ctx.font = "28px sans-serif";
-           ctx.fillStyle = '#d0cfd0';
-           ctx.fillText(year+"年"+mouth+'月'+day+'日 '+hour+' : '+min,180,97);
+         ctx.fillStyle = '#101014';
+         ctx.fillRect(280,0,85,33);
+         ctx.font = "22px Arial";
+         ctx.fillStyle = '#fff';
+         ctx.fillText(hour+' : '+min,288,30);
+         //设置日期时间
+         ctx.fillStyle = '#101012';
+         ctx.fillRect(120,70,370,30);
+         ctx.font = "500 29px  SimHei";
+         ctx.fillStyle = '#fff';
+         // ctx.fillText(year+"年"+mouth+"月"+day+"日 "+hour+' : '+min,180,97);
+
+         ctx.fillText(10+Math.ceil(Math.random()*10)+'分钟前',268,97);
 
            //修改赞数与评论
-           var likeImageData  = ctx.getImageData(502,1076,32,32);
+           // var likeImageData  = ctx.getImageData(502,1076,32,32);
            // ctx.putImageData(likeImageData,400,1076);
-           var commentImageData = ctx.getImageData(567,1076,35,35);
+           // var commentImageData = ctx.getImageData(567,1076,35,35);
            // ctx.putImageData(commentImageData,467,1076);
          ctx.fillStyle = "#181818";
          ctx.fillRect(502,1076,200,32);
-         ctx.putImageData(likeImageData,450,1076);
-         ctx.font = "22px Heiti SC";
+         ctx.drawImage(like_comment_img,0,0,40,40,450,1073,40,40);
+         // ctx.putImageData(likeImageData,450,1076);
+         ctx.font = "22px Arial";
          ctx.fillStyle="#d0cfd0";
-         ctx.fillText(like,490,1100);
-         ctx.putImageData(commentImageData,537,1076);
+         ctx.fillText(like,492,1100);
+         ctx.drawImage(like_comment_img,65,0,35,40,537,1073,35,40);
+         // ctx.putImageData(commentImageData,537,1076);
          ctx.fillText(comment,577,1100);
      };
   };
@@ -119,42 +125,45 @@ class FriendsStarComponent extends React.Component{
       _this.drawToCanvas();
    }
   };
+  submit(){
 
+  }
   render(){
      return (
         <div className="friend-star">
           <h3 className='title'>Friends-Star</h3>
+          <img style={{'display':'none'}} src={'images/like_comment.png'} ref="like_comment" alt=""/>
           <div className="input-area">
               <div className="input-item">
                 <input type="file" ref = 'file-input'onChange={this.fileInput}/>
               </div>
               <div className="input-item">
-                <span className="head">点赞数: </span>
+                <span className="head">Like: </span>
                 <input type="text" ref = 'like-input' onChange={this.valueInput('like')}/>
               </div>
               <div className="input-item">
-                <span className="head">评论数: </span>
+                <span className="head">Comment: </span>
                 <input type="text" ref = 'comment-input' onChange={this.valueInput('comment')}/>
               </div>
               <div className="input-item">
-                <span className="head">年: </span>
-                <input type="text" ref = 'year'/>
+                <span className="head">Year: </span>
+                <input type="text" ref = 'year'  onChange={this.valueInput('year')}/>
               </div>
                <div className="input-item">
-                  <span className="head">月: </span>
-                <input type="text" ref = 'mouth'/>
+                  <span className="head">Month: </span>
+                <input type="text" ref = 'mouth'  onChange={this.valueInput('mouth')}/>
               </div>
               <div className="input-item">
-                <span className="head">日: </span>
-                <input type="text" ref = 'day'/>
+                <span className="head">Day: </span>
+                <input type="text" ref = 'day'  onChange={this.valueInput('day')}/>
               </div>
               <div className="input-item">
-                <span className="head">时: </span>
-                <input type="text" ref = 'hour'/>
+                <span className="head">Hour: </span>
+                <input type="text" ref = 'hour'  onChange={this.valueInput('hour')}/>
               </div>
                <div className="input-item">
-                  <span className="head">分: </span>
-                <input type="text" ref = 'min'/>
+                  <span className="head">Minute: </span>
+                <input type="text" ref = 'min'  onChange={this.valueInput('min')}/>
               </div>
           </div>
           <canvas ref="canvas" width='640' height='1136'></canvas>
