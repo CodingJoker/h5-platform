@@ -7,17 +7,39 @@ import AlloyFinger from "./lib/AlloyFinger.js";
 class AppComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.toggle = this.toggle.bind(this);
   };
   state ={
     hide:false
   }
-  toggle(){
-    let _this = this;
-    _this.setState({hide:!_this.state.hide});
+  toggle = (e) =>{
+    if(this.alloyFingerRegister.get() == 1){
+      let _this = this;
+      if(e.direction == "Left"){
+        _this.setState({hide:true});
+      }else if(e.direction == 'Right'){
+        _this.setState({hide:false});
+      }
+    }
+    return;
   };
+  alloyFingerRegister = {
+    _alloyFingerCount: 1, //初始化注册alloyfinger事件的数量
+    ins:function(){
+      this._alloyFingerCount++;
+    },
+    desc:function(){
+      if(this._alloyFingerCount == 1){
+        console.warn("AlloyFinger has only registered at root dom! Do not decrease the count!");
+        return;
+      }
+      this._alloyFingerCount--;
+    },
+    get:function(){
+      return this._alloyFingerCount;
+    }
+  }
   render() {
-    let slideHideClass = this.state.hide ? 'slide-hide' : '';
+    let slideHideClass = this.state.hide ? 'slide-hide' : 'slide-show';
     return (
       <AlloyFinger onSwipe={this.toggle}>
       <div className="container">

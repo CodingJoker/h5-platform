@@ -1,0 +1,27 @@
+/*
+* @Author: jumorzhu@tecent.com
+* @Date:   2016-12-06 15:15:07
+* @Last Modified by:   jumorzhu
+* @Last Modified time: 2016-12-06 15:40:53
+*/
+
+
+/*color*/
+  //dark blue lite
+  $d-db-l:#1e67b3;
+/*color-end*/
+
+/* default px */
+  $d-font-family: 'Comic Sans MS',cursive,sans-serif;
+  $d-font-size: 16px;
+
+/*default px end*/
+
+/*common-function*/
+
+  @mixin set-hl-height($h:18px){
+    height:$h;
+    line-height: $h;
+  }
+
+/*common-function-end*/

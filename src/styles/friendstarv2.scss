@@ -1,0 +1,209 @@
+/*
+* @Author: jumorzhu@tecent.com
+* @Date:   2016-12-07 17:01:30
+* @Last Modified by:   jumorzhu
+* @Last Modified time: 2016-12-09 09:33:35
+*/
+@import 'global.scss';
+@import "lib/_include-media.scss";
+
+$breakpoints: (phone: 320px, tablet: 768px, desktop: 1024px);
+.friend-star-v2{
+  background: #fff;
+  .index{
+    @include media(">phone"){
+      display: none;
+    }
+    .input-area{
+      display: border-box;
+      padding: 10px;
+      margin-top: 30%;
+      .input-item{
+        display: block;
+        margin-bottom: 10px;
+        height: 24px;
+        line-height:24px;
+        &.btn-gp{
+          text-align: center;
+          margin-top: 20px;
+        }
+        span{
+          &.head{
+          display: inline-block;
+          text-align: right;
+          width: 70px;
+          height: 24px;
+          line-height:24px;
+          margin-right: 10px;
+          }
+          &.input-btn{
+            display: inline-block;
+            box-sizing: border-box;
+            min-width: 60px;
+            height: 28px;
+            line-height:28px;
+            background: #1CA6F2;
+            text-align: center;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 5px;
+            color:#fff;
+            padding:0px 5px;
+          }
+        }
+        input{
+          height: inherit;
+          border:1px solid #5FB5E3;
+          border-radius:3px;
+          }
+      }
+    }
+  }
+  .friend-step-1{
+    display: inline-block;
+    width:100vw;
+    height: 100vh;
+    font-family: 'SimHei';
+    background: #000;
+    // background:url('../images/star-example.png') no-repeat;
+    background-size:100vw 100vh;
+    @include media(">phone"){
+      display: none;
+    }
+    .image-preview{
+      position: absolute;
+      top: 66px;
+    }
+    .word{
+      @include media("<=phone") {
+        box-sizing: border-box;
+        position: absolute;
+        bottom: 42px;
+        width:100%;
+        min-height: 38px;
+        max-height: 106px;
+        overflow: hidden;
+        background: rgba(0,0,0,0.5);
+        span{
+          display: inline-block;
+        }
+        .info{
+          width:100%;
+          min-height: 6px;
+          -webkit-box-sizing:border-box;
+          font-size: 12px;
+          color:#fff;
+          padding: 8px 5px 15px 10px;
+        }
+      }
+    }
+    .bt-bar{
+      span{
+        display: inline-block;
+        box-sizing:border-box;
+        vertical-align: middles;
+        color:#fff;
+        font-size: 10px;
+        height:  43px;
+        line-height:  38px;
+        text-align: right;
+      }
+      @include media("<=phone") {
+        position: absolute;
+        bottom:0;
+        width:100%;
+        height: 43px;
+        background: #181818;
+        .like-icon{
+          position: relative;
+          width:70px;
+          padding-right:20px;
+          &:before{
+            content: " ";
+            display: inline-block;
+            width:35px;
+            height:40px;
+            background:url('../images/like_comment.png') no-repeat;
+            background-position: 12px 8px ;
+            position: absolute;
+            left: 0;
+            background-size:70px;
+          }
+
+          &:after{
+            content: ' ';
+            display: inline-block;
+            position: absolute;
+            right: 4px;
+            top: 8px;
+            height: 20px;
+            border-right:1px solid rgba(255, 230, 230, 0.13);
+          }
+
+        }
+        .comment-icon{
+          width:70px;
+          padding-right:19px;
+          position: relative;
+          &:before{
+            content: " ";
+            display: inline-block;
+            width:22px;
+            height:40px;
+            background:url('../images/like_comment.png') no-repeat;
+            background-position:-35px 9px ;
+            position: absolute;
+            left: 5px;
+            background-size:70px;
+          }
+        }
+        .num-box{
+          position: absolute;
+          right: 0;
+          top: 0;
+          width:50%;
+          // font-weight: bold;
+          text-align: right;
+          $common-margin:3px;
+          .like-num{
+           min-width: 40px;
+           margin-right: $common-margin;
+           &:before{
+             content: " ";
+             display: inline-block;
+             width:20px;
+             height:100%;
+             margin-right: $common-margin;
+             vertical-align: middle;
+             background:url('../images/like_comment.png') no-repeat;
+             background-position: 0px 9px ;
+             background-size:70px;
+           }
+          }
+          .comment-num{
+            min-width: 40px;
+            box-sizing:border-box;
+            padding-right: 5px;
+            &:before{
+              content: " ";
+              display: inline-block;
+              width:20px;
+              height:100%;
+              vertical-align: middle;
+              margin-right: $common-margin;
+              background:url('../images/like_comment.png') no-repeat;
+              background-position:-35px 9px ;
+              background-size:70px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .alert{
+    @include media("<=phone"){
+      display: none;
+    }
+  }
+
+}

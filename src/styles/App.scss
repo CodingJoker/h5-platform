@@ -66,13 +66,22 @@ ul{
     }
   }
   .main-view{
-    flex:1 1 auto;
+    position: absolute;
+    left: 200px;
+    right:0;
+    top:0;
+    bottom: 0;
+    transition: .1s all linear;
     &.slide-hide{
-      position: absolute;
       @include media("<=phone") {
       left:0px;
       }
       left: 20px;
+    }
+    &.slide-show{
+      @include media("<=phone"){
+        right:-200px;
+      }
     }
     .friend-star{
       .input-area{
@@ -98,7 +107,8 @@ ul{
             }
             &.input-btn{
               display: inline-block;
-              width: 60px;
+              box-sizing: border-box;
+              min-width: 60px;
               height: 28px;
               line-height:28px;
               background: #1CA6F2;
@@ -106,6 +116,7 @@ ul{
               border-radius: 4px;
               cursor: pointer;
               color:#fff;
+              padding:5px 10px;
             }
           }
           input{

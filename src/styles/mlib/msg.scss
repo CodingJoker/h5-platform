@@ -1,0 +1,30 @@
+/*
+* @Author: jumorzhu@tecent.com
+* @Date:   2016-12-08 16:02:15
+* @Last Modified by:   jumorzhu
+* @Last Modified time: 2016-12-08 16:35:11
+*/
+
+@import '../global.scss';
+._msg-alert{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  $radius : 70px;
+  $h:20px;
+  min-width:2* $radius;
+  color:#fff;
+  height: $h;
+  &.warn{
+    background:red;
+  }
+  text-align: center;
+  margin-left: -$radius;
+  border-radius: 0 0 3px 3px;
+  font-family: $d-font-family;
+  @-webkit-keyframes show{
+    0% {top:-$h}
+    100 {top:$h}
+  }
+  -webkit-animation: .3s linear show;
+}
