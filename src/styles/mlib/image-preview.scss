@@ -2,7 +2,7 @@
 * @Author: jumorzhu@tecent.com
 * @Date:   2016-12-06 15:20:32
 * @Last Modified by:   jumorzhu
-* @Last Modified time: 2016-12-07 17:15:16
+* @Last Modified time: 2016-12-12 17:36:48
 */
 @import '../global.scss';
 
@@ -10,18 +10,6 @@
   position: relative;
   display: inline-block;
   box-sizing:border-box;
-  .desc-btn{
-    position: absolute;
-    top: 0;
-    display: inline-block;
-    box-sizing:border-box;
-    text-align: right;
-    padding: 15px;
-    background: $d-db-l;
-    color:#fff;
-    font-family: $d-font-family;
-    cursor: pointer;
-  }
   canvas{
     display: inline-block;
   }

@@ -58,7 +58,7 @@ function getDefaultModules() {
 
 module.exports = {
   srcPath: srcPath,
-  publicPath: '/assets/',
+  publicPath: 'https://github.com/CodingJoker/h5-platform/raw/gh-pages/assets/',
   port: dfltPort,
   getDefaultModules: getDefaultModules
 };
