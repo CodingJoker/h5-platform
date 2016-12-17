@@ -2,7 +2,7 @@
 * @Author: jumorzhu@tecent.com
 * @Date:   2016-12-05 17:39:57
 * @Last Modified by:   jumorzhu
-* @Last Modified time: 2016-12-13 17:29:59
+* @Last Modified time: 2016-12-15 18:40:56
 */
 
 'use strict';
@@ -29,6 +29,7 @@ class FriendsStarV2Component extends React.Component {
       like:null,
       comment:null,
       text:'',
+      nickname:''
     }
   }
   submit = () => {
@@ -37,6 +38,7 @@ class FriendsStarV2Component extends React.Component {
      ,comment = this.refs.comment_input.value
      ,min = this.refs.min_input.value
      ,text = this.refs.pic_text.value
+     ,nickname = this.refs.nickname_input.value
     ;
     // if(!like){
     //   message.warning("请填写【赞】");
@@ -63,7 +65,8 @@ class FriendsStarV2Component extends React.Component {
         like:like,
         comment:comment,
         min:min,
-        text:text
+        text:text,
+        nickname:nickname
       },
       where:'step-1'
     });
@@ -96,7 +99,7 @@ class FriendsStarV2Component extends React.Component {
      ,at_index = where == 'index' ? {}:display_none
      ,at_step_1 = where == 'step-1' || where == 'step-2' ? {}:display_none
      ,at_step_2 = where == 'step-2' ? 'inverse':''
-     ,at_step_2_style = where == 'step-2' ?  {}:display_none
+     ,at_step_2_class = where == 'step-2' ? 'show':''
      ,step_2_image
     ;
     document.title = this.state.data.min + "分钟前";
@@ -105,8 +108,9 @@ class FriendsStarV2Component extends React.Component {
     }
 
     let images = [];
-    for(let i = 1, length = this.state.data.like; i <= length ; i++){
-        let img = require('images/attavr/'+i+'.jpg');
+    for(let i = 0, length = this.state.data.like; i < length ; i++){
+
+        let img = require('images/attavr/'+(i%60+1)+'.jpg');
         images.push(
             <img src={img} key={i} alt=""/>
           )
@@ -131,11 +135,14 @@ class FriendsStarV2Component extends React.Component {
                   <span className="head">描述: </span>
                   <input type="text" ref="pic_text" placeholder=""/>
                 </div>
+                <div className="input-item">
+                  <span className="head">昵称: </span>
+                  <input type="text" ref="nickname_input" placeholder=""/>
+                </div>
                 <div className="input-item btn-gp">
                   <span className="input-btn" onClick={this.chooseFile}>选择头像 </span>
                   <span className="input-btn" onClick={this.submit}>确认 </span>
                 </div>
-
             </div>
             <div>
               <Alert message="朋友圈第一界面点击赞返回上一界面" type="info"  />
@@ -161,15 +168,14 @@ class FriendsStarV2Component extends React.Component {
             </div>
 
           </div>
-          <div className={"friend-step-2 "} style={at_step_2_style}>
+          <div className={"friend-step-2 "+at_step_2_class} >
               <div className="info">
                 <div className="left">
                   <div className="attavr" ref="attavr">
-
                   </div>
                 </div>
                 <div className="right">
-                  <span className="user-name">Jumor</span>
+                  <span className="user-name">{this.state.data.nickname || 'Jumor'}</span>
                   <span className="text">{this.state.data.text}</span>
                   <span className="img">
                     <img src={step_2_image} alt=""/>

@@ -23,7 +23,7 @@ class AppComponent extends React.Component {
     return;
   };
   alloyFingerRegister = {
-    _alloyFingerCount: 1, //³õÊ¼»¯×¢²áalloyfingerÊÂ¼þµÄÊýÁ¿
+    _alloyFingerCount: 1, //ï¿½ï¿½Ê¼ï¿½ï¿½×¢ï¿½ï¿½alloyfingerï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     ins:function(){
       this._alloyFingerCount++;
     },
