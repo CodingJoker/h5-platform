@@ -1,3 +1,10 @@
+/**
+* @Author: Jumorzhu
+* @Date:   2016-12-13
+* @Email:  550928460@qq.com
+* @Last modified by:   Jumorzhu
+* @Last modified time: 2017-01-06
+*/
 'use strict';
 let path = require('path');
 let defaultSettings = require('./defaults');
@@ -36,8 +43,8 @@ module.exports = {
        reasons: false,
        children: false,
        source: false,
-       errors: false,
-       errorDetails: false,
+       errors: true,
+       errorDetails: true,
        warnings: false,
        publicPath: false
      }

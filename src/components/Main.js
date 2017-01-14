@@ -1,3 +1,10 @@
+/**
+* @Author: Jumorzhu
+* @Date:   2016-12-13
+* @Email:  550928460@qq.com
+* @Last modified by:   Jumorzhu
+* @Last modified time: 2017-01-07
+*/
 require('normalize.css/normalize.css');
 require('styles/App.scss');
 
@@ -44,7 +51,7 @@ class AppComponent extends React.Component {
       <AlloyFinger onSwipe={this.toggle}>
       <div className="container">
         <Nav toggle={this.toggle} hide={this.state.hide} />
-        <div className={"main-view " + slideHideClass}>
+        <div className={"main-view " + slideHideClass} id="main_view">
           {this.props.children}
         </div>
 	   </div>

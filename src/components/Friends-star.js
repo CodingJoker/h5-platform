@@ -1,8 +1,8 @@
 /*
 * @Author: jumorzhu@tecent.com
 * @Date:   2016-11-22 17:19:47
-* @Last Modified by:   jumorzhu
-* @Last Modified time: 2016-12-05 16:51:44
+* @Last modified by:   Jumorzhu
+* @Last modified time: 2017-01-09
 */
 
 'use strict';
@@ -88,7 +88,7 @@ class FriendsStarComponent extends React.Component{
            // var commentImageData = ctx.getImageData(567,1076,35,35);
            // ctx.putImageData(commentImageData,467,1076);
          ctx.fillStyle = "#181818";
-         ctx.fillRect(502,1076,200,32);
+         ctx.fillRect(480,1076,250,32);
          ctx.drawImage(like_comment_img,0,0,40,40,450,1073,40,40);
          // ctx.putImageData(likeImageData,450,1076);
          ctx.font = "22px Arial";
